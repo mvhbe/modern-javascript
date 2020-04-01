@@ -1,89 +1,48 @@
-const
-    getTextButton = document.querySelector('#get-text'),
-    getJsonButton = document.querySelector('#get-json'),
-    getApiDataButton = document.querySelector('#get-api-data'),
-    output = document.querySelector('#output');
+// const sayHello = function () {
+//     console.log('Hello');
+// };
 
-function getTextButtonClicked() {
-    console.log('=> getTextButtonClicked()');
-    fetch('text.txt')
-        .then(
-            function (response) {
-                return response.text();
-            }
-        )
-        .then(
-            function (data) {
-                console.log(`=> data = ${data}`);
-                output.innerHTML = data;
-            }
-        )
-        .catch(
-            function (error) {
-                console.log(`=> error = ${error}`);
-                output.innerHTML = error;
-            }
-        )
-}
+// const sayHello = () => {
+//     console.log('Hello');
+// };
 
-getTextButton.addEventListener('click', getTextButtonClicked);
+// const sayHello = () => console.log('Hello');
 
-function getJsonButtonClicked() {
-    console.log('=> getJsonButtonClicked()');
-    fetch('post.json')
-        .then(
-            function (response) {
-                return response.json();
-            }
-        )
-        .then(
-            function (data) {
-                console.log(`=> data = ${JSON.stringify(data)}`);
-                let items = '';
-                data.forEach(
-                    function (post) {
-                        items += `<li>${post.title}</li>`;
-                    }
-                );
-                output.innerHTML = items;
-            }
-        )
-        .catch(
-            function (error) {
-                console.log(`=> error = ${error}`);
-                output.innerHTML = error;
-            }
-        )
-}
+// sayHello();
 
-getJsonButton.addEventListener('click', getJsonButtonClicked);
+// const sayHello = function () {
+//     return 'Hello';
+// };
 
-function getApiDataButtonClicked() {
-    console.log('=> getApiDataButtonClicked()');
-    fetch('https://api.github.com/users')
-        .then(
-            function (response) {
-                return response.json();
-            }
-        )
-        .then(
-            function (users) {
-                console.log(`=> data = ${JSON.stringify(users)}`);
-                let items = '';
-                users.forEach(
-                    function (user) {
-                        items += `<li>${user.login}</li>`;
-                    }
-                );
-                output.innerHTML = items;
-            }
-        )
-        .catch(
-            function (error) {
-                console.log(`=> error = ${error}`);
-                output.innerHTML = error;
-            }
-        )
-}
+// const sayHello = () => 'Hello ...';
 
-getApiDataButton.addEventListener('click', getApiDataButtonClicked);
+// const sayHello = () => ({msg: 'Hello Again'});
+
+// console.log(sayHello());
+
+// const sayHello = (name) => console.log(`name = ${name}`);
+const sayHello = name => console.log(`name = ${name}`);
+
+sayHello('Guido Van Hoof');
+
+const users = [
+    'Guido', 'Christel', 'Patrick'
+];
+
+// const nameLengts = users.map(
+//     function (user) {
+//         return user.length;
+//     }
+// );
+
+// const nameLengts = users.map(
+//     (user) => {
+//         return user.length;
+//     }
+// );
+
+const nameLengts = users.map(
+    user => user.length
+);
+
+console.log(nameLengts);
