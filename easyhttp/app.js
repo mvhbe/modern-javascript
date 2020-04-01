@@ -1,4 +1,4 @@
-const easyHttp = new EasyHttp();
+const easyHttp = new Easyhttp2();
 
 function displayPosts(error, posts) {
     if (error) {
