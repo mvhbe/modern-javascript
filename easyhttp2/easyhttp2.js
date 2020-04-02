@@ -12,23 +12,58 @@ class Easyhttp2 {
         )
     }
 
-    post(url, dataToPost) {
-        console.log(`=> dataToPost = "${dataToPost }"`);
+    post(url, data) {
         return new Promise(
             (resolve, reject) => {
                 fetch(
-                    url,
-                    {
+                    url, {
                         method: 'POST',
                         headers: {
                             'Content-type': 'application/json'
                         },
-                        body: JSON.stringify(dataToPost)
+                        body: JSON.stringify(data)
                     }
                 )
                     .then(response => response.json())
-                    .then(dataToPost = resolve(dataToPost))
-                    .catch(error => reject(error))
+                    .then(data => resolve(data))
+                    .catch(error => reject(error));
+            }
+        )
+    }
+
+    put(url, data) {
+        return new Promise(
+            (resolve, reject) => {
+                fetch(
+                    url, {
+                        method: 'PUT',
+                        headers: {
+                            'Content-type': 'application/json'
+                        },
+                        body: JSON.stringify(data)
+                    }
+                )
+                    .then(response => response.json())
+                    .then(data => resolve(data))
+                    .catch(error => reject(error));
+            }
+        )
+    }
+
+    delete(url) {
+        return new Promise(
+            (resolve, reject) => {
+                fetch(
+                    url, {
+                        method: 'PUT',
+                        headers: {
+                            'Content-type': 'application/json'
+                        }
+                    }
+                )
+                    .then(response => response.json())
+                    .then(() => resolve('User deleted!'))
+                    .catch(error => reject(error));
             }
         )
     }
