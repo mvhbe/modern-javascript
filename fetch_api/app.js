@@ -14,13 +14,13 @@ function getTextButtonClicked() {
         )
         .then(
             function (data) {
-                console.log(`=> data = ${data}`);
+                console.log(`>>> data = ${data}`);
                 output.innerHTML = data;
             }
         )
         .catch(
             function (error) {
-                console.log(`=> error = ${error}`);
+                console.log(`>>> error = ${error}`);
                 output.innerHTML = error;
             }
         )
@@ -38,7 +38,7 @@ function getJsonButtonClicked() {
         )
         .then(
             function (data) {
-                console.log(`=> data = ${JSON.stringify(data)}`);
+                console.log(`>>> data = ${JSON.stringify(data)}`);
                 let items = '';
                 data.forEach(
                     function (post) {
@@ -50,7 +50,7 @@ function getJsonButtonClicked() {
         )
         .catch(
             function (error) {
-                console.log(`=> error = ${error}`);
+                console.log(`>>> error = ${error}`);
                 output.innerHTML = error;
             }
         )
@@ -68,7 +68,7 @@ function getApiDataButtonClicked() {
         )
         .then(
             function (users) {
-                console.log(`=> data = ${JSON.stringify(users)}`);
+                console.log(`>>> data = ${JSON.stringify(users)}`);
                 let items = '';
                 users.forEach(
                     function (user) {
@@ -80,7 +80,7 @@ function getApiDataButtonClicked() {
         )
         .catch(
             function (error) {
-                console.log(`=> error = ${error}`);
+                console.log(`>>> error = ${error}`);
                 output.innerHTML = error;
             }
         )

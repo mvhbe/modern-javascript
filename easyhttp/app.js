@@ -2,9 +2,9 @@ const easyHttp = new Easyhttp3();
 
 function displayPosts(error, posts) {
     if (error) {
-        console.log(`=> ${error}`)
+        console.log(`>>> ${error}`)
     } else {
-        console.log(`=> post(s) = ${posts}`);
+        console.log(`>>> post(s) = ${posts}`);
     }
 }
 

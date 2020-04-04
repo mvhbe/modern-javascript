@@ -7,7 +7,7 @@ document.querySelector('#get-jokes').addEventListener('click', getJokes);
 
 function createJokeItem(joke) {
     console.log('=> createJokeItem()');
-    console.log(`=> joke = ${joke.value}`);
+    console.log(`>>> joke = ${joke.value}`);
     const jokeItem = document.createElement('li');
     jokeItem.innerText = joke;
     return jokeItem;
@@ -28,7 +28,7 @@ function displayJokes(jokes) {
 }
 
 function displayError() {
-    console.log(`=> displayError()`);
+    console.log(`>>> displayError()`);
     jokesList.appendChild(createJokeItem('Something went wrong!'));
 }
 
@@ -40,7 +40,7 @@ function getJokesFromIcndb() {
     xmlHttpRequest.open('GET', `http://api.icndb.com/jokes/random/${numberOfJokes.value}`, true);
     xmlHttpRequest.onload = function() {
         if (xmlHttpRequest.status === STATUS_OK) {
-            console.log(`=> responseText = ${this.responseText}`);
+            console.log(`>>> responseText = ${this.responseText}`);
             let response = JSON.parse(this.responseText);
             if (response.type === 'success') {
                 displayJokes(response.value);
