@@ -54,7 +54,7 @@ zipCode.addEventListener('blur', validateZipCode);
 
 function invalidEmail() {
     console.log(`>>> invalidEmail()`);
-    return ! validate(/^[a-zA-Z0-9_.]+@[a-zA-Z0-9_.]+\.[a-zA-Z0-9_.]+$/, email.value);
+    return ! validate(/^([a-zA-Z0-9_.]+)@([a-zA-Z0-9_.]+)\.([a-zA-Z]{2,5})$/, email.value);
 }
 
 function validateEmail() {
