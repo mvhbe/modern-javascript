@@ -5,15 +5,58 @@ const StorageController = (
             if (items === null) {
                 items = [];
             }
+            console.log(`StorageController.items = ${items}`);
             return items;
         }
 
+        function saveItemsToLocalStorage(items) {
+            localStorage.setItem('items', JSON.stringify(items));
+        }
+
+        function addItemToLocalStorage(newItem) {
+            let items = getItemsFromLocalStorage();
+            items.push(newItem);
+            saveItemsToLocalStorage(items);
+        }
+
+        function removeItemsFromLocalStorage() {
+            saveItemsToLocalStorage([]);
+        }
+
+        function removeItemFromLocalStorage(itemToRemove) {
+            let items = getItemsFromLocalStorage();
+            items = items.filter(item => item.id !== itemToRemove.id);
+            saveItemsToLocalStorage(items);
+        }
+
+        function updateItem(itemToUpdate) {
+            let items = getItemsFromLocalStorage();
+            let itemIndex;
+            items.forEach(
+                (item, index) => {
+                    if (item.id === itemToUpdate.id) {
+                        itemIndex = index;
+                    }
+                }
+            );
+            items[itemIndex] = itemToUpdate;
+            saveItemsToLocalStorage(items);
+        }
+        
         return {
             getItems:
                 function () {
+                    console.log(`StorageController.getItems()`);
                     return getItemsFromLocalStorage();
-                }
-
+                },
+            addItem:
+                (newItem) => addItemToLocalStorage(newItem),
+            clearItems:
+                () => removeItemsFromLocalStorage(),
+            deleteItem:
+                (item) => removeItemFromLocalStorage(item),
+            updateItem:
+                (item) => updateItem(item)
         }
     }
 )();
@@ -57,6 +100,7 @@ const ItemController = (
                 }
             );
             data.items[itemIndex] = data.currentItem;
+            StorageController.updateItem(data.currentItem);
         }
 
         function updateCurrentItem(name, calories) {
@@ -69,21 +113,33 @@ const ItemController = (
         }
 
         function deleteCurrentItem() {
-            console.log(`deleteCurrentItem()`);
             data.items = data.items.filter( item => item.id !== data.currentItem.id);
-            console.log(`data.items = ${JSON.stringify(data.items)}`);
             updateTotalCalories(data.currentItem.calories, 0);
+            resetNextId();
+            StorageController.deleteItem(data.currentItem);
             data.currentItem = null;
+        }
+
+        function resetTotalCalories() {
+            data.items.forEach(item => data.totalCalories += item.calories);
+        }
+
+        function resetNextId() {
+            nextId = 0;
+            data.items.forEach(item => nextId = item.id > nextId ? item.id : nextId);
+            nextId += 1;
         }
 
         return {
             data :
                 function () {
-                    console.log('>>> data()');
                     return data;
                 },
             getItems:
                 function () {
+                    data.items = StorageController.getItems();
+                    resetTotalCalories();
+                    resetNextId();
                     return data.items;
                 },
             getTotalCalories:
@@ -95,6 +151,7 @@ const ItemController = (
                     const newItem = new Item(nextId++, name, parseInt(calories));
                     data.items.push(newItem);
                     data.totalCalories += newItem.calories;
+                    StorageController.addItem(newItem);
                     return newItem;
                 },
             clearItems:
@@ -102,6 +159,7 @@ const ItemController = (
                     data.items = [];
                     data.totalCalories = 0;
                     nextId = 1;
+                    StorageController.clearItems();
                 },
             setCurrentItem:
                 function (itemId) {
