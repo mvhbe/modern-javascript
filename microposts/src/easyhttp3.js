@@ -21,6 +21,7 @@ class Easyhttp3 {
     }
 
     async put(url, data) {
+        console.log(`>>> put(${JSON.stringify(data)}`);
         const response = await
             fetch(
                 url, {
