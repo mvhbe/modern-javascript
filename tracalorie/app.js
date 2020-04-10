@@ -42,7 +42,7 @@ const StorageController = (
             items[itemIndex] = itemToUpdate;
             saveItemsToLocalStorage(items);
         }
-        
+
         return {
             getItems:
                 function () {
