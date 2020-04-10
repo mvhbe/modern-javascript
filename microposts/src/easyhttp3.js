@@ -38,7 +38,7 @@ class Easyhttp3 {
         const response = await
             fetch(
                 url, {
-                    method: 'PUT',
+                    method: 'DELETE',
                     headers: {
                         'Content-type': 'application/json'
                     }

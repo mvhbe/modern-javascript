@@ -12,6 +12,10 @@ class DataInterface {
     addPost(newPost) {
         return easyHttp.post(this.url, newPost);
     }
+
+    deletePost(id) {
+        return easyHttp.delete(`${this.url}/${id}`);
+    }
 }
 
 export const dataInterface = new DataInterface();

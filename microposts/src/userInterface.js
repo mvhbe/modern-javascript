@@ -36,10 +36,6 @@ class UserInterface {
         this.posts.innerHTML = postsList;
     }
 
-    displayError(errorMessage) {
-
-    }
-
     isPostTitleValid() {
         return this.postTitle.value !== '';
     }
@@ -58,10 +54,6 @@ class UserInterface {
 
     getPostBody() {
         return this.postBody.value;
-    }
-
-    addPost(post) {
-        this.posts.innerHTML += createPostCard(post);
     }
 
     clearInputFields() {
