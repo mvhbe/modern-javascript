@@ -1,19 +1,69 @@
 {
-    "posts": [
-        {
-            "id": 1,
-            "title": "Post One",
-            "body":"My first post"
-        },
-        {
-            "id": 2,
-            "title": "Post Two",
-            "body":"My second post"
-        },
-        {
-            "id": 3,
-            "title": "Post Three",
-            "body":"My third post"
-        }
-    ]
+  "posts": [
+    {
+      "id": 1,
+      "title": "Post One",
+      "body": "My first post"
+    },
+    {
+      "id": 2,
+      "title": "Post Two",
+      "body": "My second post"
+    },
+    {
+      "id": 3,
+      "title": "Post Three",
+      "body": "My third post"
+    },
+    {
+      "title": "probeersel",
+      "body": "probeersel om te zien of het werkt !",
+      "id": 4
+    },
+    {
+      "title": "test",
+      "body": "ikel",
+      "id": 5
+    },
+    {
+      "title": "Wat is dit leuk !",
+      "body": "I like programming wiht javascript",
+      "id": 6
+    },
+    {
+      "title": "Nog een postje",
+      "body": "Hopelijk met resultaat ?",
+      "id": 7
+    },
+    {
+      "title": "Voor de sfeer",
+      "body": "Postje voor de sfeer",
+      "id": 8
+    },
+    {
+      "title": "Retry",
+      "body": "Nog is veu nen euro",
+      "id": 9
+    },
+    {
+      "title": "take two",
+      "body": "Yoehoe !!!!",
+      "id": 10
+    },
+    {
+      "title": "posting",
+      "body": "just to post",
+      "id": 11
+    },
+    {
+      "title": "kdsffljqks",
+      "body": "fdkjmjfkml",
+      "id": 12
+    },
+    {
+      "title": "sdfqsfsdq",
+      "body": "fdsqfsdf",
+      "id": 13
+    }
+  ]
 }
